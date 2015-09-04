@@ -3,6 +3,10 @@ require 'minitest/pride'
 
 require_relative '../lib/currency.rb'
 
+class DifferentCurrencyCodeError < StandardError
+  #puts "You cannot add currencies with different currency codes."
+end
+
 class CurrencyTest < Minitest::Test
 
   def test_currency_exists
@@ -24,5 +28,23 @@ class CurrencyTest < Minitest::Test
     refute(curr1 == curr3)
     refute(curr1 == curr4)
   end
+
+  def test_currency_addition_overload
+    curr1 = Currency.new(5.00, "USD")
+    curr2 = Currency.new(5.00, "USD")
+    assert_equal(10.00, curr1 + curr2)
+  end
+
+
+
+
+
+
+
+
+
+
+
+
 
 end
