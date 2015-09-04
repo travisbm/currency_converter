@@ -15,4 +15,14 @@ class CurrencyTest < Minitest::Test
     assert_equal("USD", currency.code)
   end
 
+  def test_currency_equals_overload
+    curr1 = Currency.new(5.00, "USD")
+    curr2 = Currency.new(5.00, "USD")
+    curr3 = Currency.new(4.00, "USD")
+    curr4 = Currency.new(5.00, "EUR")
+    assert(curr1 == curr2)
+    refute(curr1 == curr3)
+    refute(curr1 == curr4)
+  end
+
 end
