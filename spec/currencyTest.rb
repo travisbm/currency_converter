@@ -32,7 +32,7 @@ class CurrencyTest < Minitest::Test
   def test_currency_addition_overload
     curr1 = Currency.new(5.00, "USD")
     curr2 = Currency.new(5.00, "USD")
-    assert_equal(10.00, curr1 + curr2)
+    assert_equal(10.00, (curr1 + curr2))
   end
 
   def test_different_currency_code_error_addition
@@ -44,13 +44,18 @@ class CurrencyTest < Minitest::Test
   def test_currency_subtraction_overload
     curr1 = Currency.new(5.00, "USD")
     curr2 = Currency.new(5.00, "USD")
-    assert_equal(0, curr1 - curr2)
+    assert_equal(0, (curr1 - curr2))
   end
 
   def test_different_currency_code_error_subtraction
     curr1 = Currency.new(5.00, "USD")
     curr2 = Currency.new(5.00, "EUR")
     assert_raises(DifferentCurrencyCodeError){curr1 - curr2}
+  end
+
+  def test_currency_multiplicaton_overload
+    curr1 = Currency.new(5.00, "USD")
+    assert_equal(10.00, (curr1 * 2))
   end
 
 

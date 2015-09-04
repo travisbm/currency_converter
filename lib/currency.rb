@@ -28,5 +28,12 @@ class Currency
     new_currency.amount
   end
 
+  def *(other)
+    if other.is_a?(Fixnum) || other.is_a?(Float)
+      new_currency = Currency.new((@amount * other), @code)
+    end
+    new_currency.amount
+  end
+
 
 end
