@@ -35,5 +35,4 @@ class Currency
     new_currency
   end
 
-
 end

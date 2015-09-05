@@ -58,16 +58,4 @@ class CurrencyTest < Minitest::Test
     assert_equal(Currency.new(10.00, :USD), (curr1 * 2))
   end
 
-
-
-
-
-
-
-
-
-
-
-
-
 end
