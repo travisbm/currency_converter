@@ -4,6 +4,10 @@ require 'minitest/pride'    # => true
 require_relative '../lib/currencyConverter.rb'  # => true
 require_relative '../lib/currency.rb'           # => true
 
+class UnknownCurrencyCodeError < StandardError
+  #puts "You cannot add currencies with different currency codes."
+end
+
 class CurrencyConverterTest < Minitest::Test
 
   def test_currency_converter_exists
@@ -19,6 +23,12 @@ class CurrencyConverterTest < Minitest::Test
     assert_equal(Currency.new(8.97, :EUR), currency_converter.convert(Currency.new(10.00, :USD), :EUR ))
     assert_equal(Currency.new(895.80, :JPY), currency_converter.convert(Currency.new(10.00, :CAD), :JPY ))
     assert_equal(Currency.new(0.08, :USD), currency_converter.convert(Currency.new(10.00, :JPY), :USD ))
+  end
+
+  def test_unknown_currency_code_error
+    currency_converter = CurrencyConverter.new(codes = {USD: 1.0, EUR: 0.89686, JPY: 118.958, CAD: 1.32795 })                                 # => #<CurrencyConverter:0x007fa03c94ba68 @codes={:USD=>1.0, :EUR=>0.89686}>
+    assert_raises(UnknownCurrencyCodeError){currency_converter.convert(Currency.new(10.00, :GBP), :EUR )}
+    assert_raises(UnknownCurrencyCodeError){currency_converter.convert(Currency.new(10.00, :USD), :GBP )}
   end
 
 end
