@@ -16,7 +16,7 @@ class Currency
     else
       raise DifferentCurrencyCodeError
     end
-    new_currency.amount
+    new_currency
   end
 
   def -(other)
@@ -25,14 +25,14 @@ class Currency
     else
       raise DifferentCurrencyCodeError
     end
-    new_currency.amount
+    new_currency
   end
 
   def *(other)
     if other.is_a?(Fixnum) || other.is_a?(Float)
       new_currency = Currency.new((@amount * other), @code)
     end
-    new_currency.amount
+    new_currency
   end
 
 
