@@ -5,7 +5,6 @@ require_relative '../lib/currencyConverter.rb'  # => true
 require_relative '../lib/currency.rb'           # => true
 
 class UnknownCurrencyCodeError < StandardError
-  #puts "You cannot add currencies with different currency codes."
 end
 
 class CurrencyConverterTest < Minitest::Test

@@ -4,7 +4,6 @@ require 'minitest/pride'
 require_relative '../lib/currency.rb'
 
 class DifferentCurrencyCodeError < StandardError
-  #puts "You cannot add currencies with different currency codes."
 end
 
 class CurrencyTest < Minitest::Test
